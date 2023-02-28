@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
+import PictoDetail from './PictoDetail';
 import PictoResultItem from './PictoResultItem'
 
 function SearchResults(props) {
@@ -7,6 +8,8 @@ function SearchResults(props) {
     const [pictos, setPictos] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [showPictoModal, setShowPictoModal] = useState(false);
+    const [pictoToShow, setPictoToShow] = useState(null);
 
     useEffect(() => {
 
@@ -33,6 +36,17 @@ function SearchResults(props) {
         }
     }, [props.hasSearchBegun, props.searchValue])
 
+    let openPictoDetailModal = (picto) => {
+        console.log(picto);
+        setShowPictoModal(true);
+        setPictoToShow(picto);
+    }
+
+    let closePictoDetailModal = () => {
+        setShowPictoModal(false);
+        setPictoToShow(null);
+    }
+
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -41,13 +55,16 @@ function SearchResults(props) {
         return <div>Aucun picto trouvé pour le tag {props.searchValue}</div>
     } else {
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        {pictos.map((picto) => <PictoResultItem key={picto.pictoId} picto={picto} />)}
-                    </tr >
-                </tbody>
-            </table >
+            <div>
+                {showPictoModal && <PictoDetail picto={pictoToShow} handleCloseModal={closePictoDetailModal}/>}
+                <table>
+                    <tbody>
+                        <tr>
+                            {pictos.map((picto) => <PictoResultItem key={picto.pictoId} picto={picto} openPictoDetailModal={openPictoDetailModal} />)}
+                        </tr >
+                    </tbody>
+                </table >
+            </div>
         );
     }
 }
