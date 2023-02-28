@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import PictoResultItem from './PictoResultItem'
+import PictoResults from './PictoResults';
 
 function SearchResults(props) {
 
@@ -41,13 +41,10 @@ function SearchResults(props) {
         return <div>Aucun picto trouvé pour le tag {props.searchValue}</div>
     } else {
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        {pictos.map((picto) => <PictoResultItem key={picto.pictoId} picto={picto} />)}
-                    </tr >
-                </tbody>
-            </table >
+            <div>
+                {props.searchValue}
+                <PictoResults pictos={pictos}/>
+            </div>
         );
     }
 }

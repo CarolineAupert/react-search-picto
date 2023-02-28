@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 function SearchBar(props) {
 
     const [inputValue, setInputValue] = useState("");
-    
+
     let searchPicto = (tag) => {
         props.onSearchPicto(tag);
         props.setHasSearchBegun(true);
@@ -31,21 +31,21 @@ function SearchBar(props) {
     }
 
     return (
-        <form className="search-picto-form">
-            <label>
-                Rechercher un picto
-                <input type="text" value={inputValue} placeholder="Exemple : tester" onChange={handleChange} onKeyDown={handleKeyDown} />
-            </label>
-            {inputValue &&
-                <button onClick={handleClickReset}>
-                    <IoClose></IoClose>
+        <div className='search-bar'>
+            <h1 className='center'> Trouvez le picto qu'il vous faut !</h1>
+            <form className="search-form center" role="search">
+                <input type="text" aria-label="Taper un picto à chercher" value={inputValue} placeholder="Exemple : tester" onChange={handleChange} onKeyDown={handleKeyDown} />
+                {inputValue &&
+                    <button onClick={handleClickReset} ari-label="Effacer">
+                        <IoClose></IoClose>
+                    </button>
+                }
+                <button onClick={handleClickSearch} aria-label="Chercher">
+                    <FaSearch></FaSearch>
                 </button>
-            }
-            <button onClick={handleClickSearch}>
-                <FaSearch></FaSearch>
-            </button>
 
-        </form>
+            </form>
+        </div>
     );
 }
 

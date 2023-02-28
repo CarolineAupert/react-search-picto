@@ -4,8 +4,8 @@ import SearchZone from './components/SearchZone';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        test
+      <header className="header">
+        <strong>Picto-sketchnote</strong>
       </header>
      <SearchZone />
 

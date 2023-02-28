@@ -12,10 +12,10 @@ function SearchZone() {
     }
 
     return (
-        <div>
-            <SearchBar onSearchPicto={handleSearchPicto} setHasSearchBegun={setHasSearchBegun} />
+        <>
+            <SearchBar onSearchPicto={handleSearchPicto} setHasSearchBegun={setHasSearchBegun}/>
             {hasSearchBegun && <SearchResults searchValue={searchValue} hasSearchBegun={hasSearchBegun} />}
-        </div>
+        </>
     );
 }
 
