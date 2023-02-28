@@ -7,10 +7,9 @@ function PictoResultItem(props) {
     }
 
     return (
-        <td onClick={handlePictoClick}>
+        <div onClick={handlePictoClick}>
             <img src={props.picto.location} width="200" height="200"/>
-        </td>
-
+        </div>
     );
 }
 

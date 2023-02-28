@@ -1,6 +1,29 @@
+.header {
+  background-color: #FFC000;
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+
+.center {
+  text-align: center;
+}
+
+/* Components */
 .App {
 }
 
-.search-picto-form {
-  width: 500px;
+.pictos-box {
+  display : flex;
+  flex-flow: row wrap;
+}
+
+.search-bar {
+  background-color: #E6E6E6;
+  padding: 60px;
+}
+
+.search-form input {
+ /* width: 500px; */
 }

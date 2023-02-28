@@ -13,7 +13,7 @@ function PictoDetail(props) {
                         <img src={props.picto.location} />
                     </td>
                     <td>
-                        <button onClick={props.handleCloseModal}>
+                        <button onClick={props.handleCloseModal} aria-label="Fermer">
                             <IoClose></IoClose>
                         </button>
                         Picto Détail
@@ -23,8 +23,6 @@ function PictoDetail(props) {
                     </td>
                 </tr>
             </tbody>
-
-
         </table>
 
     );
