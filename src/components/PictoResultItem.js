@@ -7,8 +7,8 @@ function PictoResultItem(props) {
     }
 
     return (
-        <div onClick={handlePictoClick}>
-            <img src={props.picto.location} width="200" height="200"/>
+        <div className='picto-item pointer' onClick={handlePictoClick}>
+            <img src={props.picto.location}/>
         </div>
     );
 }

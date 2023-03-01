@@ -1,0 +1,44 @@
+.search-results {
+  margin: 0px 50px 50px 50px;
+}
+
+.pictos-results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.pictos-items {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.picto-item {
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px 0 #E6E6E6;
+  border: 1px solid #B3B3B3;
+  align-self: flex-start;  
+}
+
+.picto-item img {
+  width : 200px;
+  height : 200px;
+}
+
+.picto-item:hover {
+  box-shadow: 1px 1px 1px 1px #B3B3B3;
+}
+
+.picto-detail {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.picto-detail img {
+  width : 400px;
+  height : 400px;
+}

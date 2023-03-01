@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import '../css/SearchResults.css';
 
 function SearchZone() {
 
@@ -13,8 +14,10 @@ function SearchZone() {
 
     return (
         <>
-            <SearchBar onSearchPicto={handleSearchPicto} setHasSearchBegun={setHasSearchBegun}/>
-            {hasSearchBegun && <SearchResults searchValue={searchValue} hasSearchBegun={hasSearchBegun} />}
+            <SearchBar onSearchPicto={handleSearchPicto} setHasSearchBegun={setHasSearchBegun} />
+            <div className='search-results'>
+                {hasSearchBegun && <SearchResults searchValue={searchValue} hasSearchBegun={hasSearchBegun} />}
+            </div>
         </>
     );
 }

@@ -19,12 +19,10 @@ function PictoResults(props) {
         setPictoToShow(null);
     }
     return (
-        <div>
+        <div className='pictos-results'>
             {showPictoModal && <PictoDetail picto={pictoToShow} handleCloseModal={closePictoDetailModal} />}
-            <div className="pictos-box">
-
+            <div className="pictos-items">
                 {props.pictos.map((picto) => <PictoResultItem key={picto.pictoId} picto={picto} openPictoDetailModal={openPictoDetailModal} />)}
-
             </div >
         </div>
     );

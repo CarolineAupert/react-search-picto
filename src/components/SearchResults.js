@@ -34,15 +34,15 @@ function SearchResults(props) {
     }, [props.hasSearchBegun, props.searchValue])
 
     if (error) {
-        return <div>Erreur : {error.message}</div>;
+        return <div className='center'>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
-        return <div>Chargement…</div>;
+        return <div className='center'>Chargement…</div>;
     } else if (pictos.length === 0) {
-        return <div>Aucun picto trouvé pour le tag {props.searchValue}</div>
+        return <div className='center'>Nous n'avons trouvé aucun picto pour le terme : {props.searchValue}.</div>
     } else {
         return (
             <div>
-                {props.searchValue}
+                <h2> Pictos trouvé pour le terme : {props.searchValue} </h2>
                 <PictoResults pictos={pictos}/>
             </div>
         );
