@@ -2,17 +2,18 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import PictoGrid from '../picto/PictoGrid';
 
+// Displays the results of the search or messages such as errors.
 function SearchResults(props) {
 
     const [pictos, setPictos] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Calls the search webservice when the serach is triggered.
     useEffect(() => {
 
         if (props.hasSearchBegun) {
             const apiUrl = `http://localhost:8080/pictos?tag=${props.searchValue}`;
-            console.log(apiUrl);
             axios.get(apiUrl)
                 .then((result) => {
                     setIsLoaded(true);
@@ -32,6 +33,7 @@ function SearchResults(props) {
             setError(null);
         }
     }, [props.hasSearchBegun, props.searchValue])
+
 
     if (error) {
         return <div className='center'>Erreur : {error.message}</div>;

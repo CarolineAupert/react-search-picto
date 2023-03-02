@@ -1,8 +1,10 @@
 import { React } from 'react';
 
+// Display a picto item (without details).
 function PictoItem(props) {
 
-    let handlePictoClick = () => {
+    // The action to do chen a picto item is clicked (=> open the modal).
+    const handlePictoClick = () => {
         props.openPictoDetailModal(props.picto);
     }
 

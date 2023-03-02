@@ -2,69 +2,79 @@ import { React, useState } from 'react';
 import PictoDetail from './PictoDetail';
 import PictoItem from './PictoItem';
 import Modal from '../utils/Modal';
+import './PictoGrid.css';
 
+// Display the pictos.
 function PictoGrid(props) {
 
     const [showPictoModal, setShowPictoModal] = useState(false);
-    const [pictoToShow, setPictoToShow] = useState(null);
-    const [pictoShownIndex, setPictoShownIndex] = useState(null);
+    const [currentPicto, seCurrentPicto] = useState(null);
+    const [currentPictoIndex, setCurrentPictoIndex] = useState(null);
 
+    // Retrieve the index of the current picto.
     const getCurrentIndex = (currentPicto) => {
-        return props.pictos.findIndex(picto => {
-            return picto.pictoId === currentPicto.pictoId;
-        })
+        if (props.pictos) {
+            return props.pictos.findIndex(picto => {
+                return picto.pictoId === currentPicto.pictoId;
+            })
+        }
+        return 0;
     }
 
+    // Retrieve the picto from its index
     const getPictoByIndex = (index) => {
-        return props.pictos[index];
+        return props.pictos ? props.pictos[index] : 0;
     }
 
+    // Retrieve the next picto in the array. If it's the last, then go back to the first.
     const getNextPictoIndex = () => {
-        if (pictoShownIndex === props.pictos.length - 1) {
+        if (props.pictos && currentPictoIndex === props.pictos.length - 1) {
             return 0;
         }
-        return pictoShownIndex + 1;
+        return currentPictoIndex + 1;
     }
 
+    // Retrieve the previous picto in the array. If it's the first, then go back to the last.
     const getPrevPictoIndex = () => {
-        if (pictoShownIndex === 0) {
+        if (currentPictoIndex === 0) {
             return props.pictos.length - 1;
         }
-        return pictoShownIndex - 1;
+        return currentPictoIndex - 1;
     }
 
-    let openPictoDetailModal = (picto) => {
+    // The actions to open the modal with the picto.
+    const openPictoDetailModal = (picto) => {
         setShowPictoModal(true);
-        setPictoToShow(picto);
-        const pictoShownIndex = getCurrentIndex(picto);
-        setPictoShownIndex(pictoShownIndex);
+        seCurrentPicto(picto);
+        setCurrentPictoIndex(getCurrentIndex(picto));
     }
 
-    let closePictoDetailModal = () => {
+    // The actions to close the modal with the picto.
+    const closePictoDetailModal = () => {
         setShowPictoModal(false);
-        setPictoToShow(null);
+        seCurrentPicto(null);
     }
 
-    let goToPrevPicto = () => {
+    // The actions to select the previous picto in the array.
+    const goToPrevPicto = () => {
         const nextIndex = getNextPictoIndex();
-        setPictoToShow(getPictoByIndex(nextIndex));
-        setPictoShownIndex(nextIndex);
+        seCurrentPicto(getPictoByIndex(nextIndex));
+        setCurrentPictoIndex(nextIndex);
     }
 
-    let goToNextPicto = () => {
+    // The actions to select the next picto in the array.
+    const goToNextPicto = () => {
         const prevIndex = getPrevPictoIndex();
-        setPictoToShow(getPictoByIndex(prevIndex));
-        setPictoShownIndex(prevIndex);
+        seCurrentPicto(getPictoByIndex(prevIndex));
+        setCurrentPictoIndex(prevIndex);
     }
 
     return (
         <div className='pictos-grid'>
-            {showPictoModal && 
-            
-            <Modal handleCloseModal={closePictoDetailModal} handlePrevItem={goToPrevPicto} handleNextItem={goToNextPicto}>
-                <PictoDetail picto={pictoToShow}  />
-            </Modal>
-            // <PictoDetail picto={pictoToShow} handleCloseModal={closePictoDetailModal} handlePrevPicto={goToPrevPicto} handleNextPicto={goToNextPicto} />
+            {showPictoModal &&
+                <Modal handleCloseModal={closePictoDetailModal} handlePrevItem={goToPrevPicto} handleNextItem={goToNextPicto}>
+                    <PictoDetail picto={currentPicto} />
+                </Modal>
             }
             <div className="pictos-items">
                 {props.pictos.map((picto) => <PictoItem key={picto.pictoId} picto={picto} openPictoDetailModal={openPictoDetailModal} />)}

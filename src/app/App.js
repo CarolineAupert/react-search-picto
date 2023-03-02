@@ -1,6 +1,7 @@
 import './App.css';
 import SearchZone from '../search/SearchZone';
 
+// This a the main App Component.
 function App() {
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
         <footer className='center'>
           <div>
             <span> &copy; 2023 Copyright : </span>
-            <a href="https://caukaro.fr" target="_blank"> Caroline Aupert</a>
+            <a href="https://caukaro.fr" target="_blank" rel="noopener noreferrer"> Caroline Aupert</a>
           </div>
         </footer>
       </div>

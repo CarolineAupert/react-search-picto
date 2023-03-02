@@ -3,12 +3,14 @@ import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import './SearchResults.css';
 
+// The area where the results will be shown, as well as other messages (infos, errors, etc).
 function SearchZone() {
 
     const [searchValue, setSearchValue] = useState("");
     const [hasSearchBegun, setHasSearchBegun] = useState(false);
 
-    function handleSearchPicto(tag) {
+    // The actions to do when the serach is on.
+    const handleSearchPicto = (tag) => {
         setSearchValue(tag);
     }
 

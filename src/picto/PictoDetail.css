@@ -7,3 +7,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.picto-detail img {
+  width : 400px;
+  height : 400px;
+} 

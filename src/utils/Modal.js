@@ -3,14 +3,17 @@ import { IoClose } from 'react-icons/io5';
 import './Modal.css';
 import { GrPrevious, GrNext } from "react-icons/gr";
 
+// A component representing a modal with navigation.
 function Modal(props) {
 
+    // Closes the modal when the "Escape" key is down.
     const closeOnEscapeKeyDown = (e) => {
         if (e.key === 'Escape') {
             props.handleCloseModal();
         }
     }
 
+    // When the modal is open, the scrolling is disabled.
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -18,6 +21,7 @@ function Modal(props) {
         }
     });
 
+    // When the modal is open, listens to keydown to check if it was the "Escape" key.
     useEffect(() => {
         document.body.addEventListener('keydown', closeOnEscapeKeyDown);
         return () => {
