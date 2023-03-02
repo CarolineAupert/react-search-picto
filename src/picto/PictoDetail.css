@@ -1,0 +1,9 @@
+.picto-tags {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.picto-detail {
+  display: flex;
+  flex-direction: column;
+}

@@ -2,9 +2,7 @@
   margin: 0px 50px 50px 50px;
 }
 
-.pictos-results {
-  display: flex;
-  flex-direction: column;
+.pictos-grid {
   margin-top: 40px;
 }
 
@@ -30,15 +28,4 @@
 
 .picto-item:hover {
   box-shadow: 1px 1px 1px 1px #B3B3B3;
-}
-
-.picto-detail {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.picto-detail img {
-  width : 400px;
-  height : 400px;
 }

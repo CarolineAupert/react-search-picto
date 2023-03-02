@@ -1,5 +1,5 @@
 import './App.css';
-import SearchZone from './components/SearchZone';
+import SearchZone from '../search/SearchZone';
 
 function App() {
   return (

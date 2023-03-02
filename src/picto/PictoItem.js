@@ -1,6 +1,6 @@
 import { React } from 'react';
 
-function PictoResultItem(props) {
+function PictoItem(props) {
 
     let handlePictoClick = () => {
         props.openPictoDetailModal(props.picto);
@@ -13,4 +13,4 @@ function PictoResultItem(props) {
     );
 }
 
-export default PictoResultItem;
+export default PictoItem;

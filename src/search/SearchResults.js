@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import PictoResults from './PictoResults';
+import PictoGrid from '../picto/PictoGrid';
 
 function SearchResults(props) {
 
@@ -43,7 +43,7 @@ function SearchResults(props) {
         return (
             <div>
                 <h2> Pictos trouvé pour le terme : {props.searchValue} </h2>
-                <PictoResults pictos={pictos}/>
+                <PictoGrid pictos={pictos}/>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import '../css/SearchBar.css';
+import './SearchBar.css';
 
 function SearchBar(props) {
 

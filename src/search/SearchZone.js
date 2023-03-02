@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
-import '../css/SearchResults.css';
+import './SearchResults.css';
 
 function SearchZone() {
 
