@@ -1,0 +1,39 @@
+.picto-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.picto-detail img {
+  width: auto;
+  max-width: 250px;
+  height: auto;
+  margin: auto;
+}
+
+.picto-tags {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.picto-infos {
+  padding-top: 1rem;
+  border-top: 1px solid #B3B3B3;
+}
+
+@media screen and (min-width: 768px) {
+  .picto-detail {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .picto-detail img {
+    max-width: 400px;
+  }
+
+  .picto-infos {
+    width: 20vw;
+    padding-left: 1rem;
+    border-top: none;
+    border-left: 1px solid #B3B3B3;
+  }
+}

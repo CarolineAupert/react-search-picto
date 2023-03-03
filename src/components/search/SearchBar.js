@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
+import { MdClear } from "react-icons/md";
 import './SearchBar.css';
 
 // This component represents the search bar.
@@ -27,12 +27,14 @@ function SearchBar(props) {
     // Handle when the search button is clicked (=> does the search).
     const handleClickSearch = (e) => {
         e.preventDefault();
+        e.target.blur();
         searchPicto(inputValue);
     }
 
     // Handle the event when the "Enter" key is pressed (=> does the search).
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
+            e.target.blur();
             searchPicto(inputValue);
         }
     }
@@ -44,7 +46,7 @@ function SearchBar(props) {
                 <input type="text" aria-label="Taper un picto à chercher" value={inputValue} placeholder="Exemple : tester" onChange={handleChange} onKeyDown={handleKeyDown} />
                 {inputValue &&
                     <button className='form-clear-button pointer' onClick={handleClickReset} ari-label="Effacer">
-                        <IoClose></IoClose>
+                        <MdClear></MdClear>
                     </button>
                 }
                 <button className='form-search-button pointer' onClick={handleClickSearch} aria-label="Chercher">

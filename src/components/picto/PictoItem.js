@@ -10,7 +10,7 @@ function PictoItem(props) {
 
     return (
         <div className='picto-item pointer' onClick={handlePictoClick}>
-            <img src={props.picto.location}/>
+            <img src={props.picto.location} alt={props.picto.title}/>
         </div>
     );
 }

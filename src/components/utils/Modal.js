@@ -6,10 +6,25 @@ import { GrPrevious, GrNext } from "react-icons/gr";
 // A component representing a modal with navigation.
 function Modal(props) {
 
-    // Closes the modal when the "Escape" key is down.
-    const closeOnEscapeKeyDown = (e) => {
-        if (e.key === 'Escape') {
-            props.handleCloseModal();
+    // Manage keydowns.
+    const handleKeyDown = (e) => {
+        switch (e.key) {
+            case "Left":
+                props.handlePrevItem();
+                break;
+            case "Right":
+                props.handleNextItem();
+                break;
+            case "ArrowLeft":
+                props.handlePrevItem();
+                break;
+            case "ArrowRight":
+                props.handleNextItem();
+                break;
+            case "Escape":
+                props.handleCloseModal();
+                break;
+            default: return;
         }
     }
 
@@ -21,11 +36,11 @@ function Modal(props) {
         }
     });
 
-    // When the modal is open, listens to keydown to check if it was the "Escape" key.
+    // When the modal is open, listens to keydowns.
     useEffect(() => {
-        document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+        document.body.addEventListener('keydown', handleKeyDown);
         return () => {
-            document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+            document.body.removeEventListener('keydown', handleKeyDown);
         }
     });
 

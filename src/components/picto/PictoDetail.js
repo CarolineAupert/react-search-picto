@@ -21,13 +21,15 @@ function PictoDetail(props) {
         <div className='picto-detail'>
             {props.picto &&
                 <>
-                    <img src={props.picto.location} />
-                    <div>
-                        Créé le {props.picto.creationDate}
-                    </div>
-                    <div className='picto-tags'>
-                        {/* Prévoir quand il y aura beaucoup de termes ! */}
-                        <span>Termes associés :&nbsp;</span> {tagsList()}
+                    <img src={props.picto.location} alt={props.picto.title} />
+                    <div className='picto-infos'>
+                        <div>
+                            Créé le {props.picto.creationDate}
+                        </div>
+                        <div className='picto-tags'>
+                            {/* TODO : Prévoir quand il y aura beaucoup de termes ! */}
+                            <span><span>Termes associés :</span> {tagsList()}</span>
+                        </div>
                     </div>
                 </>
             }

@@ -10,7 +10,7 @@
 
 header {
   background-color: #FFC000;
-  padding: 10px;
+  padding: 0.8rem;
   border-radius: 0px 0px 5px 5px;
   box-shadow: 0 2px 6px 0 #B3B3B3;
   position: relative;
@@ -19,7 +19,7 @@ header {
 
 footer {
   background-color: #FFEBAD;
-  padding: 20px;
+  padding: 1.3rem;
 }
 
 .center {
