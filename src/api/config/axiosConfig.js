@@ -4,19 +4,21 @@ import axios from "axios";
 // TODO config errors etc
 const apiClient = axios.create({
     // withCredentials: true,
-    baseURL: process.env.REACT_APP_API_URL, // <- TODO ENV variable
+    baseURL: process.env.REACT_APP_API_URL,
 });
 
 // Defining a custom error handler for all APIs
 const errorHandler = (error) => {
-    const statusCode = error.response?.status
+    
+    console.log(error);
 
+    // const statusCode = error.response?.status
     // Todo Check why 401
     // TODO handle more errors
     // logging only errors that are not 401
-    if (statusCode && statusCode !== 401) {
-        console.error(error)
-    }
+    // if (statusCode && statusCode !== 401) {
+    //     console.error(error)
+    // }
     return Promise.reject(error)
 }
 
@@ -24,9 +26,9 @@ apiClient.interceptors.request.use(
     (config) => {
         return ({
             ...config,
-            // headers: {
-            //   ...
-            // },
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
           })
         },
     (error) => {

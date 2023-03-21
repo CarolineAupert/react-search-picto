@@ -1,7 +1,7 @@
 import './App.css';
 import SearchZone from '../search/SearchZone';
 
-// This a the main App Component.
+// This is the main App Component.
 function App() {
   return (
     <>

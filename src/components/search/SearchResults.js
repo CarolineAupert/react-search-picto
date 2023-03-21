@@ -10,11 +10,12 @@ function SearchResults(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Calls the search webservice when the serach is triggered.
+    // Calls the search webservice when the search is triggered.
     useEffect(() => {
 
         if (props.hasSearchBegun) {
             PictoApi.indexByTag(props.searchValue).then((result) => {
+                setError(null);
                 setIsLoaded(true);
                 setPictos(result.data);
             },

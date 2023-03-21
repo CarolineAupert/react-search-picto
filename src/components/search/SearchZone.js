@@ -9,12 +9,12 @@ function SearchZone() {
     const [searchValue, setSearchValue] = useState("");
     const [hasSearchBegun, setHasSearchBegun] = useState(false);
 
-    // Format the serach value (remove extra spaces and put to lower case)
+    // Format the search value (remove extra spaces and put to lower case)
     const formatSearchValue = (value) => {
         return value && value.trim().split(/ +/).join(' ').toLowerCase();
     }
 
-    // The actions to do when the serach is on.
+    // The actions to do when the search is on.
     const handleSearchPicto = (tag) => {
         const formattedTag = formatSearchValue(tag);
         if (formattedTag) {

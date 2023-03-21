@@ -14,7 +14,7 @@ function SearchBar(props) {
         props.setHasSearchBegun(true);
     }
 
-    // Handle the change in th einput form (=> displays the clear button).
+    // Handle the change in the input form (=> displays the clear button).
     const handleChange = (e) => {
         setInputValue(e.target.value);
     }

@@ -5,7 +5,7 @@ import './PictoDetail.css';
 function PictoDetail(props) {
 
     // The tags associated to the picto, each one separated by a comma.
-    const tagsList = () => {
+    const getTagsList = () => {
         if (props.picto.tags) {
             return props.picto.tags.map((tag, index) => {
                 return (
@@ -28,7 +28,7 @@ function PictoDetail(props) {
                         </div>
                         <div className='picto-tags'>
                             {/* TODO : Prévoir quand il y aura beaucoup de termes ! */}
-                            <span><span>Termes associés :</span> {tagsList()}</span>
+                            <span><span>Termes associés :</span> {getTagsList()}</span>
                         </div>
                     </div>
                 </>
