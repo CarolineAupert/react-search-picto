@@ -1,0 +1,9 @@
+.search-results {
+  margin: 0rem 1rem 2rem 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .search-results {
+    margin: 0rem 4rem 4rem 4rem;
+  }
+}
