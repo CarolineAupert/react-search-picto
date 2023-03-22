@@ -6,7 +6,7 @@ import PictoGrid from '../picto/PictoGrid';
 
 // Displays the results of the search or messages such as errors.
 function SearchResults() {
-    
+
     const [pictos, setPictos] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -36,11 +36,11 @@ function SearchResults() {
 
 
     if (error) {
-        return <div className='center'>Une erreur est survenue, veuillez réessayer. Si l'erreur persiste, veuillez contacter l'amdinistrateur du site.</div>;
+        return <div className='center' data-testid="results-error">Une erreur est survenue, veuillez réessayer. Si l'erreur persiste, veuillez contacter l'amdinistrateur du site.</div>;
     } else if (!isLoaded) {
-        return <div className='center'>Chargement…</div>;
-    } else if (pictos.length === 0) {
-        return <div className='center'>Nous n'avons trouvé aucun picto pour le terme : {searchValue}</div>
+        return <div className='center' data-testid="results-loading">Chargement…</div>;
+    } else if (!pictos || pictos.length === 0) {
+        return <div className='center' data-testid="results-no-picto">Nous n'avons trouvé aucun picto pour le terme : {searchValue}</div>
     } else {
         return (
             <div>

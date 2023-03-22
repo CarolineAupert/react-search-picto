@@ -25,7 +25,7 @@ function SearchZone() {
         <>
             <SearchBar onSearchPicto={handleSearchPicto} />
             <div className='search-results'>
-                <Outlet/>
+                <Outlet />
             </div>
         </>
     );

@@ -49,17 +49,17 @@ function Modal(props) {
             <div className='dark-background' onClick={props.handleCloseModal} />
             <div className='centered modal'>
                 <div className='modal-header'>
-                    <button onClick={props.handleCloseModal} aria-label="Fermer" className='pointer modal-button close-button'>
+                    <button onClick={props.handleCloseModal} aria-label="Fermer" className='pointer modal-button close-button' data-testid='close-modal'>
                         <IoClose></IoClose>
                     </button>
                 </div>
                 <div className='modal-content'>
                     <div className='nav-item'>
-                        <button onClick={props.handlePrevItem} aria-label="Suivant" className='pointer modal-button prev-button'>
+                        <button onClick={props.handlePrevItem} aria-label="Suivant" className='pointer modal-button prev-button' data-testid='prev-modal'>
                             <GrPrevious></GrPrevious>
                         </button>
                         {props.children}
-                        <button onClick={props.handleNextItem} aria-label="Précédent" className='pointer modal-button next-button'>
+                        <button onClick={props.handleNextItem} aria-label="Précédent" className='pointer modal-button next-button' data-testid='next-modal'>
                             <GrNext></GrNext>
                         </button>
                     </div>

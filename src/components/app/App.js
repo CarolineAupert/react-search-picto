@@ -7,13 +7,13 @@ function App() {
     <>
       <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
       <div className="app">
-        <header>
+        <header data-testid="header">
           <strong>Picto-sketchnote</strong>
         </header>
-        <div className='main'>
+        <div className='main' data-testid="content">
           <SearchZone />
         </div>
-        <footer className='center'>
+        <footer className='center' data-testid="footer">
           <div>
             <span> &copy; 2023 Copyright : </span>
             <a href="https://caukaro.fr" target="_blank" rel="noopener noreferrer"> Caroline Aupert</a>

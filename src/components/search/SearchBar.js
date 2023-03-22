@@ -4,13 +4,13 @@ import { MdClear } from "react-icons/md";
 import './SearchBar.css';
 
 // This component represents the search bar.
-function SearchBar(props) {
+function SearchBar({ onSearchPicto }) {
 
     const [inputValue, setInputValue] = useState("");
 
     // The actions to do when the search is on.
     const searchPicto = (tag) => {
-        props.onSearchPicto(tag);
+        onSearchPicto(tag);
     }
 
     // Handle the change in the input form (=> displays the clear button).
@@ -24,31 +24,23 @@ function SearchBar(props) {
     }
 
     // Handle when the search button is clicked (=> does the search).
-    const handleClickSearch = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         e.target.blur();
         searchPicto(inputValue);
     }
 
-    // Handle the event when the "Enter" key is pressed (=> does the search).
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            e.target.blur();
-            searchPicto(inputValue);
-        }
-    }
-
     return (
         <div className='search-bar'>
             <h1 className='center'> Trouvez le picto qu'il vous faut !</h1>
-            <form className="search-form center cf" role="search">
-                <input type="text" aria-label="Taper un picto à chercher" value={inputValue} placeholder="Exemple : tester" onChange={handleChange} onKeyDown={handleKeyDown} />
+            <form className="search-form center cf" role="search" onSubmit={handleSubmit}>
+                <input type="text" aria-label="Taper un picto à chercher" value={inputValue} placeholder="Exemple : tester" onChange={handleChange} data-testid="search-input" />
                 {inputValue &&
-                    <button className='form-clear-button pointer' onClick={handleClickReset} ari-label="Effacer">
+                    <button className='form-clear-button pointer' type="reset" onClick={handleClickReset} aria-label="Effacer" data-testid="clear-button">
                         <MdClear></MdClear>
                     </button>
                 }
-                <button className='form-search-button pointer' onClick={handleClickSearch} aria-label="Chercher">
+                <button className='form-search-button pointer' type="submit" aria-label="Chercher" data-testid="search-button">
                     <FaSearch></FaSearch>
                 </button>
             </form>
