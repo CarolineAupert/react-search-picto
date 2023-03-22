@@ -16,7 +16,7 @@ function PictoItem(props) {
     }
 
     return (
-        <div tabindex="0" className='picto-item pointer' onClick={handlePictoClick} onKeyDown={handleKeyDown}>
+        <div tabIndex="0" className='picto-item pointer' onClick={handlePictoClick} onKeyDown={handleKeyDown}>
             <img src={props.picto.location} alt={props.picto.title} />
         </div>
     );

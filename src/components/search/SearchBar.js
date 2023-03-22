@@ -11,7 +11,6 @@ function SearchBar(props) {
     // The actions to do when the search is on.
     const searchPicto = (tag) => {
         props.onSearchPicto(tag);
-        props.setHasSearchBegun(true);
     }
 
     // Handle the change in the input form (=> displays the clear button).
@@ -52,7 +51,6 @@ function SearchBar(props) {
                 <button className='form-search-button pointer' onClick={handleClickSearch} aria-label="Chercher">
                     <FaSearch></FaSearch>
                 </button>
-
             </form>
         </div>
     );
