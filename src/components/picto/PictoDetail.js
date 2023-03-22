@@ -2,15 +2,15 @@ import { React } from 'react';
 import './PictoDetail.css';
 
 // This component represents the details of a PictoDetail. It can be shown in a modal for example.
-function PictoDetail(props) {
+function PictoDetail({ picto }) {
 
     // The tags associated to the picto, each one separated by a comma.
     const getTagsList = () => {
-        if (props.picto.tags) {
-            return props.picto.tags.map((tag, index) => {
+        if (picto.tags) {
+            return picto.tags.map((tag, index) => {
                 return (
                     <span key={tag}>
-                        {(index ? ", " : "")}{tag}
+                        {(index ? ", " : "").concat(tag)}
                     </span>
                 )
             })
@@ -19,12 +19,12 @@ function PictoDetail(props) {
 
     return (
         <div className='picto-detail'>
-            {props.picto &&
+            {picto &&
                 <>
-                    <img src={props.picto.location} alt={props.picto.title} />
+                    <img src={picto.location} alt={picto.title} />
                     <div className='picto-infos'>
                         <div>
-                            Créé le {props.picto.creationDate}
+                            Créé le {picto.creationDate}
                         </div>
                         <div className='picto-tags'>
                             {/* TODO : Prévoir quand il y aura beaucoup de termes ! */}

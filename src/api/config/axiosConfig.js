@@ -7,7 +7,7 @@ const apiClient = axios.create({
 
 // Defining a custom error handler for all APIs
 const errorHandler = (error) => {
-    
+
     console.log(error);
 
     // const statusCode = error.response?.status
@@ -27,8 +27,8 @@ apiClient.interceptors.request.use(
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
-          })
-        },
+        })
+    },
     (error) => {
         return errorHandler(error);
     }
@@ -41,5 +41,4 @@ apiClient.interceptors.response.use((response) =>
     },
 );
 
-const { get, post, put, delete: destroy } = apiClient;
-export { get, post, put, destroy };
+export default apiClient;
