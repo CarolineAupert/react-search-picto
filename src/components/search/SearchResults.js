@@ -1,20 +1,23 @@
 import { React, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { PictoApi } from '../../api/services/PictoApi';
 import PictoGrid from '../picto/PictoGrid';
 
 
 // Displays the results of the search or messages such as errors.
-function SearchResults(props) {
-
+function SearchResults() {
+    
     const [pictos, setPictos] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Param retrieve from the router
+    const { searchValue } = useParams();
+
     // Calls the search webservice when the search is triggered.
     useEffect(() => {
-
-        if (props.hasSearchBegun) {
-            PictoApi.indexByTag(props.searchValue).then((result) => {
+        if (searchValue) {
+            PictoApi.indexByTag(searchValue).then((result) => {
                 setError(null);
                 setIsLoaded(true);
                 setPictos(result.data);
@@ -23,13 +26,13 @@ function SearchResults(props) {
                     setIsLoaded(true);
                     setError(error);
                 })
-        };
 
-        return () => {
-            setIsLoaded(false);
-            setError(null);
+            return () => {
+                setIsLoaded(false);
+                setError(null);
+            }
         }
-    }, [props.hasSearchBegun, props.searchValue])
+    }, [searchValue])
 
 
     if (error) {
@@ -37,11 +40,11 @@ function SearchResults(props) {
     } else if (!isLoaded) {
         return <div className='center'>Chargement…</div>;
     } else if (pictos.length === 0) {
-        return <div className='center'>Nous n'avons trouvé aucun picto pour le terme : {props.searchValue}</div>
+        return <div className='center'>Nous n'avons trouvé aucun picto pour le terme : {searchValue}</div>
     } else {
         return (
             <div>
-                <h2> Pictos trouvés pour le terme : {props.searchValue} </h2>
+                <h2> Pictos trouvés pour le terme : {searchValue} </h2>
                 <PictoGrid pictos={pictos} />
             </div>
         );

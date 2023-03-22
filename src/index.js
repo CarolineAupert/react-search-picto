@@ -3,11 +3,40 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import SearchResults from './components/search/SearchResults';
+import PictoDetailModal from './components/picto/PictoDetailModal';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "search/:searchValue",
+        element: <SearchResults />,
+        children : [
+          {
+            path: "picto/:pictoId",
+            element: <PictoDetailModal />,
+          },
+        ]
+      },
+    
+    ],
+    // TODO
+    // errorElement: <ErrorPage />,
+  },
+
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

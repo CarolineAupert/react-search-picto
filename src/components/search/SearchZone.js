@@ -1,13 +1,12 @@
-import { React, useState } from 'react';
+import { React } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
 import './SearchResults.css';
 
 // The area where the results will be shown, as well as other messages (infos, errors, etc).
 function SearchZone() {
 
-    const [searchValue, setSearchValue] = useState("");
-    const [hasSearchBegun, setHasSearchBegun] = useState(false);
+    const navigate = useNavigate();
 
     // Format the search value (remove extra spaces and put to lower case)
     const formatSearchValue = (value) => {
@@ -18,15 +17,15 @@ function SearchZone() {
     const handleSearchPicto = (tag) => {
         const formattedTag = formatSearchValue(tag);
         if (formattedTag) {
-            setSearchValue(formattedTag);
+            navigate(`search/${formattedTag}`);
         }
     }
 
     return (
         <>
-            <SearchBar onSearchPicto={handleSearchPicto} setHasSearchBegun={setHasSearchBegun} />
+            <SearchBar onSearchPicto={handleSearchPicto} />
             <div className='search-results'>
-                {hasSearchBegun && <SearchResults searchValue={searchValue} hasSearchBegun={hasSearchBegun} />}
+                <Outlet/>
             </div>
         </>
     );

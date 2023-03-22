@@ -1,9 +1,7 @@
 import axios from "axios";
 
 // Config for Axios
-// TODO config errors etc
 const apiClient = axios.create({
-    // withCredentials: true,
     baseURL: process.env.REACT_APP_API_URL,
 });
 
