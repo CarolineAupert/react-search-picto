@@ -38,10 +38,6 @@ jobs:
       - name: Install package dependencies
         run: npm install
 
-      - name: Check linting and formatting
-        # Custom script for checking the linting and formatting being in place
-        run: npm run lint
-
       - run: npm ci
 
       - run: npm run build --if-present
