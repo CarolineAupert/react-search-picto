@@ -9,10 +9,10 @@ describe('PictoApi', () => {
     it("should call get function", () => {
         const apiMock = jest.spyOn(apiClient, 'get');
 
-        PictoApi.indexByTag("perso");
+        PictoApi.indexByQuery("perso");
 
         expect(apiMock).toHaveBeenCalledTimes(1);
-        expect(apiMock).toBeCalledWith("/pictos?tag=perso");
+        expect(apiMock).toBeCalledWith("/pictos?query=perso");
 
         // await waitFor(() => expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent("Pictos trouvés pour le terme : perso"));
 
