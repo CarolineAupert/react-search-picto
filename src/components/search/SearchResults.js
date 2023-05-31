@@ -17,7 +17,7 @@ function SearchResults() {
     // Calls the search webservice when the search is triggered.
     useEffect(() => {
         if (searchValue) {
-            PictoApi.indexByTag(searchValue).then((result) => {
+            PictoApi.indexByQuery(searchValue).then((result) => {
                 setError(null);
                 setIsLoaded(true);
                 setPictos(result.data);
