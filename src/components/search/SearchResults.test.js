@@ -39,7 +39,7 @@ const pictos = [
 describe('SearchResults', () => {
     it("should display results", async () => {
 
-        const apiMock = jest.spyOn(PictoApi, 'indexByTag');
+        const apiMock = jest.spyOn(PictoApi, 'indexByQuery');
         apiMock.mockResolvedValue({ data: pictos });
 
         render(
@@ -56,7 +56,7 @@ describe('SearchResults', () => {
 
     it("should display no results (empty)", async () => {
 
-        const apiMock = jest.spyOn(PictoApi, 'indexByTag');
+        const apiMock = jest.spyOn(PictoApi, 'indexByQuery');
         apiMock.mockResolvedValue({ data: [] });
 
         render(
@@ -73,7 +73,7 @@ describe('SearchResults', () => {
 
     it("should display no results (null)", async () => {
 
-        const apiMock = jest.spyOn(PictoApi, 'indexByTag');
+        const apiMock = jest.spyOn(PictoApi, 'indexByQuery');
         apiMock.mockResolvedValue({ data: null });
 
         render(
@@ -90,7 +90,7 @@ describe('SearchResults', () => {
 
     it("should display loading", async () => {
 
-        const apiMock = jest.spyOn(PictoApi, 'indexByTag');
+        const apiMock = jest.spyOn(PictoApi, 'indexByQuery');
         apiMock.mockResolvedValue({ data: null });
 
         render(
@@ -107,7 +107,7 @@ describe('SearchResults', () => {
 
     it("should display error", async () => {
 
-        const apiMock = jest.spyOn(PictoApi, 'indexByTag');
+        const apiMock = jest.spyOn(PictoApi, 'indexByQuery');
         apiMock.mockRejectedValue(() => Promise.reject('API error'))
 
 
