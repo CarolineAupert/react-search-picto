@@ -12,8 +12,8 @@ import apiClient from '../config/axiosConfig';
 // removeAll
 
 export const PictoApi = {
-    indexByTag: (tag) =>
-        apiClient.get(`/pictos?tag=${tag}`),
+    indexByQuery: (query) =>
+        apiClient.get(`/pictos?query=${query}`),
 
     //   single: (id) =>
     //     get(`/ users / ${ id }`),
