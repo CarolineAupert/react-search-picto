@@ -1,15 +1,24 @@
 import './App.css';
 import SearchZone from '../search/SearchZone';
+import ResponsiveImage from '../utils/ResponsiveImage';
 
 // This is the main App Component.
 function App() {
+
+  const titleImage = {
+    url: process.env.REACT_APP_API_S3 + "/images/brand/Picto-sketchnote-titre.png",
+    alt: "Picto-sketchnote",
+    className : "title-img"
+  };
+
   return (
     <>
       <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
       <div className="app">
         <header data-testid="header">
-          <strong>Picto-sketchnote</strong>
+          <ResponsiveImage image={titleImage}/>
         </header>
+
         <div className='main' data-testid="content">
           <SearchZone />
         </div>
