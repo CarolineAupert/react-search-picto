@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './components/app/App';
-import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import SearchResults from './components/search/SearchResults';
+import App from './components/app/App';
 import PictoDetailModal from './components/picto/PictoDetailModal';
+import SearchResults from './components/search/SearchResults';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import DefaultResults from './components/search/DefaultResults';
 
 
 const router = createBrowserRouter([
@@ -17,16 +18,25 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "search/:searchValue",
-        element: <SearchResults />,
-        children : [
+        path: "",
+        element: <DefaultResults />, 
+        children: [
           {
             path: "picto/:pictoId",
             element: <PictoDetailModal />,
           },
         ]
       },
-    
+      {
+        path: "search/:searchValue",
+        element: <SearchResults />, 
+        children: [
+          {
+            path: "picto/:pictoId",
+            element: <PictoDetailModal />,
+          },
+        ]
+      },
     ],
     // TODO
     // errorElement: <ErrorPage />,

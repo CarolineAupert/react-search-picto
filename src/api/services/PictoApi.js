@@ -14,7 +14,9 @@ import apiClient from '../config/axiosConfig';
 export const PictoApi = {
     indexByQuery: (query) =>
         apiClient.get(`/pictos?query=${query}`),
-
+    indexByLast:(pictosNb) =>
+        apiClient.get(`/pictos?last=${pictosNb}`),
+        
     //   single: (id) =>
     //     get(`/ users / ${ id }`),
     //   singleByEmail: (email) =>
