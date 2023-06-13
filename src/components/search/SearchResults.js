@@ -43,7 +43,7 @@ function SearchResults() {
         return <div className='center' data-testid="results-no-picto">Nous n'avons trouvé aucun picto pour le terme : {searchValue}</div>
     } else {
         return (
-            <div>
+            <div data-testid='search-results'>
                 <h2> Pictos trouvés pour le terme : {searchValue} </h2>
                 <PictoGrid pictos={pictos} />
             </div>

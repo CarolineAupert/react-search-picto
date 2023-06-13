@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import SearchZone from './SearchZone';
 
 describe('SearchZone', () => {
@@ -56,5 +56,19 @@ describe('SearchZone', () => {
         fireEvent.click(searchButton);
 
         expect(screen.queryByTestId("result")).toBeNull;
+    });
+
+    it("should display default results", () => {
+        render(
+            <MemoryRouter initialEntries={["/"]}>
+                <Routes>
+                    <Route path="/" element={<SearchZone />}>
+                        <Route path="/" element={<div data-testid='defaultResult'>Default Results</div>}></Route>
+                    </Route>
+                </Routes>
+            </MemoryRouter >
+        );
+
+        expect(screen.getByTestId("defaultResult")).toBeInTheDocument;
     });
 });
