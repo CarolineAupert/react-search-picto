@@ -18,7 +18,6 @@ describe('SearchBar', () => {
         const clearButton = screen.queryByTestId("clear-button");
         expect(clearButton).toBeNull;
 
-
         const searchButton = screen.getByTestId("search-button");
         expect(searchButton).toBeInTheDocument;
 

@@ -10,7 +10,12 @@ import SearchResults from './components/search/SearchResults';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import DefaultResults from './components/search/DefaultResults';
-
+import AboutZone from './components/search/AboutZone';
+import SearchZone from './components/search/SearchZone';
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+//core
+import "primereact/resources/primereact.min.css";
 
 const router = createBrowserRouter([
   {
@@ -19,23 +24,33 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <DefaultResults />, 
+        element: <SearchZone />, 
         children: [
           {
-            path: "picto/:pictoId",
-            element: <PictoDetailModal />,
+            path: "",
+            element: <DefaultResults />, 
+            children: [
+              {
+                path: "picto/:pictoId",
+                element: <PictoDetailModal />,
+              },
+            ]
+          },
+          {
+            path: "search/:searchValue",
+            element: <SearchResults />, 
+            children: [
+              {
+                path: "picto/:pictoId",
+                element: <PictoDetailModal />,
+              },
+            ]
           },
         ]
       },
       {
-        path: "search/:searchValue",
-        element: <SearchResults />, 
-        children: [
-          {
-            path: "picto/:pictoId",
-            element: <PictoDetailModal />,
-          },
-        ]
+        path: "about",
+        element: <AboutZone />, 
       },
     ],
     // TODO

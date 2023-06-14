@@ -1,0 +1,47 @@
+.navigation {
+  display: none;
+}
+
+.mobile-nav.navigation {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFEBAD;
+  position: absolute;
+  right: 0px;
+  margin-top: 1rem;
+  width: 100vw;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+  padding: 1rem 4rem 1rem 2rem;
+  border-bottom: 1px solid white;
+}
+
+.navigation a.active {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    display: block;
+  }
+
+  .navigation a.active {
+    background-color: transparent;
+    font-weight: bold;
+  }
+
+  .navigation a {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-right: 2rem;
+  }
+}
