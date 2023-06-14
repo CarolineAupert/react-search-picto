@@ -4,10 +4,6 @@
   height: 100vh;
 }
 
-.main {
-  flex: 1;
-}
-
 header {
   background-color: #FFC000;
   padding: 0.8rem;
@@ -17,6 +13,8 @@ header {
   z-index: 1;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer {
@@ -24,8 +22,20 @@ footer {
   padding: 1.3rem;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
 .center {
   text-align: center;
+}
+
+.justify {
+  text-align: justify;
 }
 
 .pointer {
