@@ -12,10 +12,9 @@ import reportWebVitals from './reportWebVitals';
 import DefaultResults from './components/search/DefaultResults';
 import AboutZone from './components/search/AboutZone';
 import SearchZone from './components/search/SearchZone';
-//theme
-import "primereact/resources/themes/lara-light-indigo/theme.css";     
-//core
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -24,11 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <SearchZone />, 
+        element: <SearchZone />,
         children: [
           {
             path: "",
-            element: <DefaultResults />, 
+            element: <DefaultResults />,
             children: [
               {
                 path: "picto/:pictoId",
@@ -38,7 +37,7 @@ const router = createBrowserRouter([
           },
           {
             path: "search/:searchValue",
-            element: <SearchResults />, 
+            element: <SearchResults />,
             children: [
               {
                 path: "picto/:pictoId",
@@ -50,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <AboutZone />, 
+        element: <AboutZone />,
       },
     ],
     // TODO
@@ -61,7 +60,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </React.StrictMode>
 );
 
