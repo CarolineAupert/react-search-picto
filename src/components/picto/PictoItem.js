@@ -1,17 +1,13 @@
+import Link from 'next/link';
 import { React } from 'react';
 
 // Display a picto item (without details).
-function PictoItem({ picto, openPictoDetailModal }) {
-
-    // The action to do chen a picto item is clicked (=> open the modal).
-    const handlePictoClick = () => {
-        openPictoDetailModal(picto);
-    }
+function PictoItem({ picto }) {
 
     return (
-        <button className='picto-item pointer' onClick={handlePictoClick}>
+        <Link className='picto-item'  href={`/picto/${picto.pictoId}`}>
             <img src={picto.location} alt={picto.title} />
-        </button>
+        </Link>
     );
 }
 

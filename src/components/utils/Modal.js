@@ -1,4 +1,6 @@
-import { React, useEffect } from 'react';
+'use client'
+
+import { useEffect } from 'react';
 import { IoClose } from 'react-icons/io5';
 import './Modal.css';
 import { GrPrevious, GrNext } from "react-icons/gr";

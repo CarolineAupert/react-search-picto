@@ -1,4 +1,3 @@
-import { React } from 'react';
 import './PictoDetail.css';
 
 // This component represents the details of a PictoDetail. It can be shown in a modal for example.

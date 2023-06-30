@@ -1,24 +1,50 @@
-import { React, useEffect } from 'react';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+'use client'
+
 import Modal from '../utils/Modal';
 import PictoDetail from './PictoDetail';
+import { useRouter } from 'next/navigation';
 
 // This component represents the details of a PictoDetail. It can be shown in a modal for example.
-function PictoDetailModal() {
+function PictoDetailModal({ pictoId }) {
 
     // From the router
-    const { pictoId } = useParams();
-    const [pictos] = useOutletContext();
-    const navigate = useNavigate();
+    // TODO retrieve picts
+    //const [pictos] = useOutletContext();
+
+    const pictos = [
+        {
+            pictoId: 15,
+            location: "https://images.picto-sketchnote.com/pictos/Equipe-engrenage.jpg",
+            creationDate: "04/06/2022",
+            title: "Parchemin",
+            tags: ["parchemin", "détails", "loi"]
+        },
+        {
+            pictoId: 14,
+            location: "https://images.picto-sketchnote.com/pictos/Equipe-clef.jpg",
+            creationDate: "04/07/2022",
+            title: "loupe",
+            tags: ["loupe", "chercher", "grossir"]
+        },
+        {
+            pictoId: 3,
+            location: "perso.jpg",
+            creationDate: "04/08/2022",
+            title: "perso",
+            tags: ["perso", "humain", "emotion"]
+        },
+        {
+            pictoId: 4,
+            location: "soleil.jpg",
+            creationDate: "04/09/2022",
+            title: "soleil",
+            tags: ["lumiere", "soleil"]
+        }
+    ]
+
+    const router = useRouter();
 
     const picto = pictos && pictos.find(picto => picto.pictoId === +pictoId);
-
-    // Check if the picto exists.
-    useEffect(() => {
-        if (!picto) {
-            navigate("..");
-        }
-    }, [picto, navigate])
 
     // Retrieve the picto from its index
     const getPictoByIndexFromId = () => {
@@ -45,21 +71,21 @@ function PictoDetailModal() {
 
     // The actions to close the modal with the picto.
     const closePictoDetailModal = () => {
-        navigate("..");
+        router.push("/pictos/travail");
     }
 
     // The actions to select the previous picto in the array.
     const goToNextPicto = () => {
         const currentIndex = getPictoByIndexFromId();
         const nextPictoId = getNextPictoId(currentIndex);
-        navigate(`../picto/${nextPictoId}`);
+        router.push(`/picto/${nextPictoId}`);
     }
 
     // The actions to select the next picto in the array.
     const goToPrevPicto = () => {
         const currentIndex = getPictoByIndexFromId();
         const prevPictoId = getPrevPictoId(currentIndex);
-        navigate(`../picto/${prevPictoId}`);
+        router.push(`/picto/${prevPictoId}`);
     }
 
     return (

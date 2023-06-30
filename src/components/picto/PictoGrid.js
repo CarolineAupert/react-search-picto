@@ -1,24 +1,13 @@
-import { React } from 'react';
-import PictoItem from './PictoItem';
-import './PictoGrid.css';
-import { Outlet, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './PictoGrid.css';
+import PictoItem from './PictoItem';
 
 // Display the pictos.
 function PictoGrid({ pictos }) {
-
-    const navigate = useNavigate();
-
-    // The actions to open the modal with the picto.
-    const openPictoDetailModal = (picto) => {
-        navigate(`picto/${picto.pictoId}`);
-    }
-
     return (
         <div className='pictos-grid'>
-            <Outlet context={[pictos]} />
             <div className="pictos-items">
-                {pictos && pictos.map((picto) => <PictoItem key={picto.pictoId} picto={picto} openPictoDetailModal={openPictoDetailModal} />)}
+                {pictos && pictos.map((picto) => <PictoItem key={picto.pictoId} picto={picto} />)}
             </div >
         </div>
     );

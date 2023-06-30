@@ -1,7 +1,8 @@
+'use client'
 import { React, useState } from 'react';
 import Hamburger from './Hamburger';
-import './HamburgerNav.css';
-import { NavLink } from 'react-router-dom';
+import  './HamburgerNav.css';
+import Link from 'next/link'
 
 // Display the navigation menu.
 function HamburgerNav() {
@@ -16,13 +17,13 @@ function HamburgerNav() {
         <nav role="navigation"
             aria-label="main navigation">
             <Hamburger toggleHamburger={toggleHamburger} isOpen={hamburgerOpen} data-testid="hamburger"></Hamburger>
-            <div className={`${hamburgerOpen && 'mobile-nav'} navigation`}  data-testid="nav">
-                <NavLink to="/" onClick={hamburgerOpen && toggleHamburger} data-testid="nav-home">
+            <div className={`${hamburgerOpen && 'mobile-nav'} navigation`} data-testid="nav">
+                <Link href="/" onClick={hamburgerOpen && toggleHamburger} data-testid="nav-home">
                     Accueil
-                </NavLink>
-                <NavLink to="/about" onClick={hamburgerOpen && toggleHamburger} data-testid="nav-about">
+                </Link>
+                <Link href="/about" onClick={hamburgerOpen && toggleHamburger} data-testid="nav-about">
                     A propos
-                </NavLink>
+                </Link>
             </div>
 
         </nav>

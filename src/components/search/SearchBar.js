@@ -1,17 +1,12 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
-import './SearchBar.css';
+import "./SearchBar.css";
 
 // This component represents the search bar.
 function SearchBar({ onSearchPicto }) {
 
     const [inputValue, setInputValue] = useState("");
-
-    // The actions to do when the search is on.
-    const searchPicto = (tag) => {
-        onSearchPicto(tag);
-    }
 
     // Handle the change in the input form (=> displays the clear button).
     const handleChange = (e) => {
@@ -27,7 +22,7 @@ function SearchBar({ onSearchPicto }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         e.target.blur();
-        searchPicto(inputValue);
+        onSearchPicto(inputValue);
     }
 
     return (
