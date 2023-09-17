@@ -1,7 +1,7 @@
 import { React } from 'react';
 import SearchZone from '../search/SearchZone';
 
-const SearchZoneLayout = ({ children }) => {
+const SearchZoneLayout = ({children}) => {
     return (
         <SearchZone>
             {children}

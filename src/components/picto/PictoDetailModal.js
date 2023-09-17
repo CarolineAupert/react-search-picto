@@ -1,51 +1,14 @@
 'use client'
 
-import Modal from '../utils/Modal';
+import { PictoApi } from '../api/PictoApi';
 import PictoDetail from './PictoDetail';
-import { useRouter } from 'next/navigation';
 
-// This component represents the details of a PictoDetail. It can be shown in a modal for example.
-function PictoDetailModal({ pictoId }) {
+// This component represents the details of a Picto in a Modal
+async function PictoDetailModal({ pictoId }) {
+  
+    const picto = pictoId && await PictoApi.getById(pictoId);
 
-    // From the router
-    // TODO retrieve picts
-    //const [pictos] = useOutletContext();
-
-    const pictos = [
-        {
-            pictoId: 15,
-            location: "https://images.picto-sketchnote.com/pictos/Equipe-engrenage.jpg",
-            creationDate: "04/06/2022",
-            title: "Parchemin",
-            tags: ["parchemin", "détails", "loi"]
-        },
-        {
-            pictoId: 14,
-            location: "https://images.picto-sketchnote.com/pictos/Equipe-clef.jpg",
-            creationDate: "04/07/2022",
-            title: "loupe",
-            tags: ["loupe", "chercher", "grossir"]
-        },
-        {
-            pictoId: 3,
-            location: "perso.jpg",
-            creationDate: "04/08/2022",
-            title: "perso",
-            tags: ["perso", "humain", "emotion"]
-        },
-        {
-            pictoId: 4,
-            location: "soleil.jpg",
-            creationDate: "04/09/2022",
-            title: "soleil",
-            tags: ["lumiere", "soleil"]
-        }
-    ]
-
-    const router = useRouter();
-
-    const picto = pictos && pictos.find(picto => picto.pictoId === +pictoId);
-
+    /*
     // Retrieve the picto from its index
     const getPictoByIndexFromId = () => {
         return pictos && pictos.findIndex(picto => picto.pictoId === +pictoId);
@@ -69,11 +32,6 @@ function PictoDetailModal({ pictoId }) {
         return pictos[previousIndex].pictoId;
     }
 
-    // The actions to close the modal with the picto.
-    const closePictoDetailModal = () => {
-        router.push("/pictos/travail");
-    }
-
     // The actions to select the previous picto in the array.
     const goToNextPicto = () => {
         const currentIndex = getPictoByIndexFromId();
@@ -86,15 +44,11 @@ function PictoDetailModal({ pictoId }) {
         const currentIndex = getPictoByIndexFromId();
         const prevPictoId = getPrevPictoId(currentIndex);
         router.push(`/picto/${prevPictoId}`);
-    }
+    }*/
 
     return (
         <>
-            {picto &&
-                <Modal handleCloseModal={closePictoDetailModal} handlePrevItem={goToPrevPicto} handleNextItem={goToNextPicto}>
-                    <PictoDetail picto={picto} />
-                </Modal>
-            }
+            {picto && <PictoDetail picto={picto} />}
         </>
     );
 }
